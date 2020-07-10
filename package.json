@@ -1,0 +1,32 @@
+{
+    "name": "node-red-contrib-pdfmake",
+    "description": "a node to create pdf documents based in a well defined json",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": "Oliver Charlet <oliver.charlet@clarities.de>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ollixx/node-red-contrib-pdfmake.git"
+    },
+    "keywords": [
+        "node-red",
+        "pdf",
+        "svg",
+        "pdfmake"
+    ],
+    "node-red": {
+        "nodes": {
+            "pdfmake": "pdfmake/pdfmake.js"
+        }
+    },
+    "devDependencies": {
+        "mocha": "^7.0.1",
+        "node-red": "^1.0.3",
+        "node-red-node-test-helper": "^0.2.3"
+    },
+    "dependencies": {
+        "pdfmake": "^0.1.64"
+    },
+    "scripts": {
+    }
+}

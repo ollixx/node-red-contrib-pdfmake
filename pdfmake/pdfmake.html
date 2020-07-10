@@ -1,0 +1,83 @@
+<script type="text/javascript">
+    const NODE_CATEGORY = "advanced";
+
+    RED.nodes.registerType('pdfmake', {
+        category: NODE_CATEGORY,
+        color: "rgb(222, 189, 92)",
+        icon: "font-awesome/fa-file-pdf-o",
+        defaults: {
+            name: { value: "" },
+            outputType: {value: "base64"}
+        },
+        label: function () {
+            return this.name || "pdfmake";
+        },
+        inputs: 1,
+        outputs: 1,
+        paletteLabel: "pdfmake",
+        oneditprepare: function () {
+            this.editor = RED.editor.createEditor({
+                id: 'node-description-editor',
+                mode: 'ace/mode/markdown',
+                value: $("#node-input-info").val()
+            });
+
+            let config = this;
+            $("#node-input-outputType").append($("<option></option>").attr("value", "base64").text("base64"));;
+            $("#node-input-outputType").append($("<option></option>").attr("value", "Buffer").text("Buffer"));;
+            $("#node-input-outputType").val(config.outputType);
+        },
+        oneditsave: function () {
+            // save parameter sources for selected component
+            $("#node-input-info").val(this.editor.getValue());
+            // get target node ID
+            this.outputType = $("#node-input-outputType").children("option:selected").val();
+        }
+	});
+</script>
+<script type="text/x-red" data-template-name="pdfmake">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i></label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputType" data-i18n="pdfmake.label.outputType"><i class="fa fa-random"></i> <span></span></label>
+        <select id="node-input-outputType"></select>
+    </div>
+  </script>
+  <script type="text/html" data-help-name="pdfmake">
+    <p>Produces a PDF using <a href="https://pdfmake.github.io/docs/" target="blank">pdfmake</a></p>
+    
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">json</span>
+            </dt>
+            <dd> the <a href="https://pdfmake.github.io/docs/document-definition-object/">document definition</a> of the PDF to create. </dd>
+            <dt class="optional">options <span class="property-type">json</span></dt>
+            <dd> options as defined <a href="https://pdfmake.github.io/docs/options/">here</a></dd>
+        </dl>
+    
+     <h3>Outputs</h3>
+         <ol class="node-ports">
+             <li>PDF
+                 <dl class="message-properties">
+                     <dt>payload <span class="property-type">base64 encoded string | buffer</span></dt>
+                     <dd>the PDF in the selected format</dd>
+                 </dl>
+             </li>
+         </ol>
+    
+    <h3>Details</h3>
+        <p><code>msg.payload</code> is used as the document definition for the result PDF.
+        The node expects an object in the format defined <a href="https://pdfmake.github.io/docs/document-definition-object/">here</a>.
+        </p>
+        <p>Take a look at the examples provided by this node:
+            <ul>
+                <li>simple pdf - the first, simple example with two paragraphs</li>
+                <li>image svg pdf - a PDF with an image from file and a SVG. Needs node-red-node-base64!</li>
+            </ul>
+            Or surf <a href="http://pdfmake.org/playground.html">here</a> for more examples.
+        </p>
+    
+    </script>
