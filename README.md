@@ -4,10 +4,10 @@ This node is a simple wrapper around pdfmake, a JSON based solution to create PD
 [pdfmake website](http://pdfmake.org/#/)
 
 ## Install
-node-red-contrib-pdkmake can be install using the node-red editor's pallete or by running npm in the console:
+node-red-contrib-pdfmake can be install using the node-red editor's pallete or by running npm in the console:
 
 ``` bash
-npm install node-red-contrib-pdkmake
+npm install node-red-contrib-pdfmake
 ```
 
 ## Usage
