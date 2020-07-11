@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-pdfmake",
-    "description": "a node to create pdf documents based in a well defined json",
+    "description": "a node to create pdf documents from a well defined json",
     "version": "1.0.1",
     "license": "MIT",
     "author": "Oliver Charlet <oliver.charlet@clarities.de>",
