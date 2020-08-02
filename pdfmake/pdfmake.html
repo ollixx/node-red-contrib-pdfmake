@@ -5,7 +5,10 @@
         icon: "font-awesome/fa-file-pdf-o",
         defaults: {
             name: { value: "" },
-            outputType: {value: "base64"}
+            outputType: {value: "base64"},
+            inputProperty: {value: "payload"},
+            options: {value: "{}"},
+            outputProperty: {value: "payload"},
         },
         label: function () {
             return this.name || "pdfmake";
@@ -24,23 +27,52 @@
             $("#node-input-outputType").append($("<option></option>").attr("value", "base64").text("base64"));;
             $("#node-input-outputType").append($("<option></option>").attr("value", "Buffer").text("Buffer"));;
             $("#node-input-outputType").val(config.outputType);
+
+            $("#node-input-inputProperty").typedInput({
+                default: "msg",
+                types: ["msg","global", "flow", "json", "jsonata"]
+            });
+            $("#node-input-options").typedInput({
+                default: "json",
+                types: ["msg","global", "flow", "json", "jsonata"]
+            });
+            $("#node-input-outputProperty").typedInput({
+                default: "msg",
+                types: ["msg","global", "flow"]
+            });
+
         },
         oneditsave: function () {
             // save parameter sources for selected component
             $("#node-input-info").val(this.editor.getValue());
             // get target node ID
             this.outputType = $("#node-input-outputType").children("option:selected").val();
+            this.inputProperty = $("#node-input-inputProperty").typedInput("value");
+            this.options = $("#node-input-options").typedInput("value");
+            this.outputProperty = $("#node-input-outputProperty").typedInput("value");
         }
 	});
 </script>
 <script type="text/x-red" data-template-name="pdfmake">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i></label>
-        <input type="text" id="node-input-name">
+        <label for="node-input-name" ><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
     <div class="form-row">
-        <label for="node-input-outputType" data-i18n="pdfmake.label.outputType"><i class="fa fa-random"></i> <span></span></label>
+        <label for="node-input-inputProperty"><i class="fa fa-ellipsis-h"></i> <span data-i18n="pdfmake.label.inputProperty"></span></label>
+        <input id="node-input-inputProperty">
+    </div>
+    <div class="form-row">
+        <label for="node-input-options"><i class="fa fa-code"></i> <span data-i18n="pdfmake.label.options"></span></label>
+        <input id="node-input-options">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputType"><i class="fa fa-sign-out"></i> <span data-i18n="pdfmake.label.outputType"></span></label>
         <select id="node-input-outputType"></select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-outputProperty"><i class="fa fa-sign-out"></i> <span data-i18n="pdfmake.label.outputProperty"></span></label>
+        <input id="node-input-outputProperty">
     </div>
   </script>
   <script type="text/html" data-help-name="pdfmake">
