@@ -1,7 +1,7 @@
 {
     "name": "node-red-contrib-pdfmake",
     "description": "a node to create pdf documents from a well defined json",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "author": "Oliver Charlet <oliver.charlet@clarities.de>",
     "repository": {
@@ -25,8 +25,7 @@
         "node-red-node-test-helper": "^0.2.3"
     },
     "dependencies": {
-        "pdfmake": "^0.1.64"
+        "pdfmake": "^0.1.68"
     },
-    "scripts": {
-    }
+    "scripts": {}
 }
