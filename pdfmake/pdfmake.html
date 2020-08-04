@@ -75,39 +75,4 @@
         <input id="node-input-outputProperty">
     </div>
   </script>
-  <script type="text/html" data-help-name="pdfmake">
-    <p>Produces a PDF using <a href="https://pdfmake.github.io/docs/" target="blank">pdfmake</a></p>
-    
-    <h3>Inputs</h3>
-        <dl class="message-properties">
-            <dt>payload
-                <span class="property-type">json</span>
-            </dt>
-            <dd> the <a href="https://pdfmake.github.io/docs/document-definition-object/">document definition</a> of the PDF to create. </dd>
-            <dt class="optional">options <span class="property-type">json</span></dt>
-            <dd> options as defined <a href="https://pdfmake.github.io/docs/options/">here</a></dd>
-        </dl>
-    
-     <h3>Outputs</h3>
-         <ol class="node-ports">
-             <li>PDF
-                 <dl class="message-properties">
-                     <dt>payload <span class="property-type">base64 encoded string | buffer</span></dt>
-                     <dd>the PDF in the selected format</dd>
-                 </dl>
-             </li>
-         </ol>
-    
-    <h3>Details</h3>
-        <p><code>msg.payload</code> is used as the document definition for the result PDF.
-        The node expects an object in the format defined <a href="https://pdfmake.github.io/docs/document-definition-object/">here</a>.
-        </p>
-        <p>Take a look at the examples provided by this node:
-            <ul>
-                <li>simple pdf - the first, simple example with two paragraphs</li>
-                <li>image svg pdf - a PDF with an image from file and a SVG. Needs node-red-node-base64!</li>
-            </ul>
-            Or surf <a href="http://pdfmake.org/playground.html">here</a> for more examples.
-        </p>
-    
-    </script>
+ 
