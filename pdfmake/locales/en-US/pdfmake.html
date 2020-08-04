@@ -1,0 +1,33 @@
+<script type="text/html" data-help-name="pdfmake">
+    <p>Produces a PDF using <a href="https://pdfmake.github.io/docs/" target="blank">pdfmake</a></p>
+    
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>Property
+                <span class="property-type">property</span>
+            </dt>
+            <dd> defines, where the <a href="https://pdfmake.github.io/docs/document-definition-object/">document definition</a> will be provided. </dd>
+            <dt>Out Type <span class="property-type">[base64 string | buffer]</span></dt>
+            <dd>Defines which format the result will have. Either a base64 encoded string or a binary Buffer</dd>
+            <dt class="optional">Options <span class="property-type">property</span></dt>
+            <dd> Set a message part, that provides Options as defined <a href="https://pdfmake.github.io/docs/options/">here</a></dd>
+        </dl>
+    
+     <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>output <span class="property-type">property</span></dt>
+        <dd>Set the target message part, which will contain the resulting PDF.</dd>
+    </dl>
+    
+    <h3>Details</h3>
+    <p>The given Property is used as the document definition for the result PDF.
+    The node expects an object in the format defined <a href="https://pdfmake.github.io/docs/document-definition-object/">here</a>.
+    </p>
+    <p>Take a look at the examples provided by this node:
+        <ul>
+            <li>simple pdf - the first, simple example with two paragraphs</li>
+            <li>image svg pdf - a PDF with an image from file and a SVG. Needs node-red-node-base64!</li>
+        </ul>
+        Or surf <a href="http://pdfmake.org/playground.html">here</a> for more examples.
+    </p>    
+</script>

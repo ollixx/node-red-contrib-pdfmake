@@ -4,28 +4,29 @@ module.exports = function (RED) {
     RED.nodes.registerType("pdfmake", pdfmake);
     function pdfmake(config) {
         var node = this;
-        node.outputType = config.outputType;
+        var pdfMake = require('pdfmake/build/pdfmake.js');
+        var pdfFonts = require('pdfmake/build/vfs_fonts.js');
+        pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
         // Create our node and event handler
         RED.nodes.createNode(this, config);
 
         this.on("input", function (msg) {
 
-            let docDefinition = msg.payload;
-            let options = msg.options;
+            let docDefinition = RED.util.getMessageProperty(msg, config.inputProperty);
+            let options = RED.util.getMessageProperty(msg, config.options);
+            let outputProperty = config.outputProperty;
+            let outputType = config.outputType;
             
-            var pdfMake = require('pdfmake/build/pdfmake.js');
-            var pdfFonts = require('pdfmake/build/vfs_fonts.js');
-            pdfMake.vfs = pdfFonts.pdfMake.vfs;
             const pdfDocGenerator = pdfMake.createPdf(docDefinition, options);
-            if (node.outputType == "base64") {
+            if (outputType == "base64") {
                 pdfDocGenerator.getBase64((base64) => {
-                    msg.payload = base64;
+                    RED.util.setMessageProperty(msg, outputProperty, base64);
                     this.send(msg);
                 });
-            } else if (node.outputType == "Buffer") {
+            } else if (outputType == "Buffer") {
                 pdfDocGenerator.getBuffer((buffer) => {
-                    msg.payload = new Buffer(buffer);
+                    RED.util.setMessageProperty(msg, outputProperty, Buffer.from(buffer));
                     this.send(msg);
                 });
             } else {

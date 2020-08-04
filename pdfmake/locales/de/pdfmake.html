@@ -1,0 +1,38 @@
+<script type="text/html" data-help-name="pdfmake">
+    <p>Erzeugt ein PDF mit <a href="https://pdfmake.github.io/docs/" target="blank">pdfmake</a></p>
+    
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>Dokument
+                <span class="property-type">json</span>
+            </dt>
+            <dd> Erwartet wird eine korrekte <a href="https://pdfmake.github.io/docs/document-definition-object/">Dokumentenbeschreibung</a> des zu erstellenden PDFs</dd>
+            <dt>Typ
+                <span class="property-type">[base64 | Buffer]</span>
+            </dt>
+            <dd> Auswahl des Ausgabeformates des PDFs, entweder als base64 kodierter String oder als Bufferobjekt</dd>
+            <dt class="optional">Options 
+                <span class="property-type">json</span></dt>
+            <dd> Options, wie <a href="https://pdfmake.github.io/docs/options/">hier</a> beschrieben</dd>
+        </dl>
+    
+     <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>Ausgabe Property <span class="property-type">Property</span></dt>
+        <dd>Legt fest, wohin das ERgebnis geschrieben wird (msg, global, flow etc.)</dd>
+    </dl>
+    
+    <h3>Details</h3>
+    <p>Mit der Input Property wird festgelegt, woher der Knoten die Dokumentendefinition beziehen soll.
+    Diese muss in dem durch <a href="https://pdfmake.github.io/docs/document-definition-object/">pdfmake</a> vorgegebenen Format vorliegen.
+    Es wird dann ein PDF erzeugt und entweder als base64 String oder als binärer Buffer bereitgestellt.
+    Das Ziel der Ausgabe kann ebenfalls durch die Ausgabe-Property festgelegt werden.
+    </p>
+    <p>Beachte die bereitgestellten Beispiele:
+        <ul>
+            <li>simple pdf - ein erstes, einfaches Beispiel mit zwei Absätzen</li>
+            <li>image svg pdf - ein PDF mit einem Bild aus einer Datei und einem integrierten SVG. Benötigt den knoten aus node-red-node-base64!</li>
+        </ul>
+        Weitere Beispiele findest Du <a href="http://pdfmake.org/playground.html">hier</a>
+    </p>    
+</script>

@@ -1,0 +1,10 @@
+{
+    "pdfmake": {
+        "label": {
+            "inputProperty": "Property",
+            "options": "Options",
+            "outputType": "Out Type",
+            "outputProperty": "Output to"
+        }
+    }
+}
