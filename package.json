@@ -4,9 +4,15 @@
     "version": "1.1.0",
     "license": "MIT",
     "author": "Oliver Charlet <oliver.charlet@clarities.de>",
+    "contributors": [
+        {
+            "name": "Tiago Gomes",
+            "email": "tiagoslg@gmail.com"
+        }
+    ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/ollixx/node-red-contrib-pdfmake.git"
+        "url": "https://github.com/tiagoslg/node-red-contrib-pdfmake"
     },
     "keywords": [
         "node-red",
@@ -25,7 +31,7 @@
         "node-red-node-test-helper": "^0.2.3"
     },
     "dependencies": {
-        "pdfmake": "^0.1.68"
+        "pdfmake": "^0.2.6"
     },
     "scripts": {}
 }
