@@ -6,9 +6,16 @@
         defaults: {
             name: { value: "" },
             outputType: {value: "base64"},
-            inputProperty: {value: "payload"},
-            options: {value: "{}"},
+            inputProperty: {value: "payload", required: true},
+            inputPropertyType: {value: "msg"},
+            tableOptions: {value: "{}"},
+            tableOptionsType: {value: "json"},
+            fonts: {value: "{}"},
+            fontsType: {value: "json"},
+            vfs: {value: "{}"},
+            vfsType: {value: "json"},
             outputProperty: {value: "payload"},
+            outputPropertyType: {value: "msg"},
         },
         label: function () {
             return this.name || "pdfmake";
@@ -17,39 +24,55 @@
         outputs: 1,
         paletteLabel: "pdfmake",
         oneditprepare: function () {
-            this.editor = RED.editor.createEditor({
-                id: 'node-description-editor',
-                mode: 'ace/mode/markdown',
-                value: $("#node-input-info").val()
-            });
-
-            let config = this;
-            $("#node-input-outputType").append($("<option></option>").attr("value", "base64").text("base64"));;
-            $("#node-input-outputType").append($("<option></option>").attr("value", "Buffer").text("Buffer"));;
-            $("#node-input-outputType").val(config.outputType);
+            $("#node-input-outputType").typedInput({type:"outputType", types:[{
+                value: "outputType",
+                options: [
+                    { value: "base64", label: "Base64"},
+                    { value: "buffer", label: "Buffer"}
+                ]
+            }]})
 
             $("#node-input-inputProperty").typedInput({
                 default: "msg",
-                types: ["msg","global", "flow", "json", "jsonata"]
+                types: ["msg","global", "flow", "json", "jsonata"],
+                typeField: $("#node-input-inputPropertyType")
             });
-            $("#node-input-options").typedInput({
+            $("#node-input-tableOptions").typedInput({
                 default: "json",
-                types: ["msg","global", "flow", "json", "jsonata"]
+                types: ["msg","global", "flow", "json", "jsonata"],
+                typeField: $("#node-input-tableOptionsType")
+            });
+            $("#node-input-fonts").typedInput({
+                default: "json",
+                types: ["msg","global", "flow", "json", "jsonata"],
+                typeField: $("#node-input-fontsType")
+            });
+            $("#node-input-vfs").typedInput({
+                default: "json",
+                types: ["msg","global", "flow", "json", "jsonata"],
+                typeField: $("#node-input-vfsType")
             });
             $("#node-input-outputProperty").typedInput({
                 default: "msg",
-                types: ["msg","global", "flow"]
+                types: ["msg","global", "flow"],
+                typeField: $("#node-input-outputPropertyType")
             });
 
         },
         oneditsave: function () {
             // save parameter sources for selected component
-            $("#node-input-info").val(this.editor.getValue());
+            // $("#node-input-info").val(this.editor.getValue());
             // get target node ID
-            this.outputType = $("#node-input-outputType").children("option:selected").val();
-            this.inputProperty = $("#node-input-inputProperty").typedInput("value");
-            this.options = $("#node-input-options").typedInput("value");
-            this.outputProperty = $("#node-input-outputProperty").typedInput("value");
+            //debugger
+            // this.outputType = $("#node-input-outputType").children("option:selected").val();
+
+            /*for (let fieldName of ['inputProperty', 'tableOptions', 'fonts', 'vfs', 'outputProperty'] ) {
+                let field = $(`#node-input-${fieldName}`);
+                this[fieldName] = {
+                    "value": field.typedInput("value"),
+                    "type": field.typedInput("type")
+                }
+            }*/
         }
 	});
 </script>
@@ -61,18 +84,31 @@
     <div class="form-row">
         <label for="node-input-inputProperty"><i class="fa fa-ellipsis-h"></i> <span data-i18n="pdfmake.label.inputProperty"></span></label>
         <input id="node-input-inputProperty">
+        <input type="hidden" id="node-input-inputPropertyType">
     </div>
     <div class="form-row">
-        <label for="node-input-options"><i class="fa fa-code"></i> <span data-i18n="pdfmake.label.options"></span></label>
-        <input id="node-input-options">
+        <label for="node-input-tableOptions"><i class="fa fa-code"></i> <span data-i18n="pdfmake.label.tableOptions"></span></label>
+        <input id="node-input-tableOptions">
+        <input type="hidden" id="node-input-tableOptionsType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-fonts"><i class="fa fa-code"></i> <span data-i18n="pdfmake.label.fonts"></span></label>
+        <input id="node-input-fonts">
+        <input type="hidden" id="node-input-fontsType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-vfs"><i class="fa fa-code"></i> <span data-i18n="pdfmake.label.vfs"></span></label>
+        <input id="node-input-vfs">
+        <input type="hidden" id="node-input-vfsType">
     </div>
     <div class="form-row">
         <label for="node-input-outputType"><i class="fa fa-sign-out"></i> <span data-i18n="pdfmake.label.outputType"></span></label>
-        <select id="node-input-outputType"></select>
+        <input type="text" id="node-input-outputType" placeholder="output type">
     </div>
     <div class="form-row">
         <label for="node-input-outputProperty"><i class="fa fa-sign-out"></i> <span data-i18n="pdfmake.label.outputProperty"></span></label>
         <input id="node-input-outputProperty">
+        <input type="hidden" id="node-input-outputPropertyType">
     </div>
-  </script>
+</script>
  

@@ -1,8 +1,10 @@
 {
-    "pdfmake": {
+    "pdfmake2": {
         "label": {
             "inputProperty": "Property",
             "options": "Options",
+            "fonts": "Fonts",
+            "vsf": "VSF",
             "outputType": "Out Type",
             "outputProperty": "Output to"
         }

@@ -1,5 +1,26 @@
-
 module.exports = function (RED) {
+
+    const sendResponse = (node, msg, response, outputType, outputProp) => {
+        if(outputType === 'msg'){
+            
+            RED.util.setMessageProperty(msg, outputProp, response);
+
+        } else if (outputType === 'flow'){
+            
+            node.context().flow.set(outputProp, response)
+
+        } else if (outputType === 'global'){
+            
+            node.context().global.set(outputProp, response)
+            
+        }
+
+        node.send(msg);
+    }
+
+    const evalObj = (object) => {
+        return (typeof object !== 'object' || Object.keys(object).length === 0) ? undefined : object
+    }
 
     RED.nodes.registerType("pdfmake", pdfmake);
     function pdfmake(config) {
@@ -13,26 +34,24 @@ module.exports = function (RED) {
 
         this.on("input", function (msg) {
 
-            let docDefinition = RED.util.getMessageProperty(msg, config.inputProperty);
-            let options = RED.util.getMessageProperty(msg, config.options);
+            let docDefinition = evalObj(RED.util.evaluateNodeProperty(config.inputProperty, config.inputPropertyType, node, msg));
+            let tableOptions = evalObj(RED.util.evaluateNodeProperty(config.tableOptions, config.tableOptionsType, node, msg));
+            let customFonts = evalObj(RED.util.evaluateNodeProperty(config.fonts, config.fontsType, node, msg));
+            let customVFS = evalObj(RED.util.evaluateNodeProperty(config.vfs, config.vfsType, node, msg));
             let outputProperty = config.outputProperty;
+            let outputPropertyType = config.outputPropertyType;
             let outputType = config.outputType;
             
-            const pdfDocGenerator = pdfMake.createPdf(docDefinition, options);
-            if (outputType == "base64") {
-                pdfDocGenerator.getBase64((base64) => {
-                    RED.util.setMessageProperty(msg, outputProperty, base64);
-                    this.send(msg);
-                });
-            } else if (outputType == "Buffer") {
-                pdfDocGenerator.getBuffer((buffer) => {
-                    RED.util.setMessageProperty(msg, outputProperty, Buffer.from(buffer));
-                    this.send(msg);
-                });
-            } else {
-                throw "unknown output type. This should never happen"
-            }
+            const pdfDocGenerator = pdfMake.createPdf(docDefinition, tableOptions, customFonts, customVFS);
 
+            pdfDocGenerator.getBase64((response) => {
+                if (outputType == "buffer") {
+                    response = Buffer.from(response, "base64")
+                }
+                
+                sendResponse(node, msg, response, outputPropertyType, outputProperty)
+
+            });
         });
 
     }

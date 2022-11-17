@@ -7,10 +7,34 @@
                 <span class="property-type">property</span>
             </dt>
             <dd> defines, where the <a href="https://pdfmake.github.io/docs/document-definition-object/">document definition</a> will be provided. </dd>
-            <dt>Out Type <span class="property-type">[base64 string | buffer]</span></dt>
+            <dt>Out Type 
+                <span class="property-type">[base64 string | buffer]</span>
+            </dt>
             <dd>Defines which format the result will have. Either a base64 encoded string or a binary Buffer</dd>
-            <dt class="optional">Options <span class="property-type">property</span></dt>
+            <dt class="optional">Options 
+                <span class="property-type">property</span>
+            </dt>
             <dd> Set a message part, that provides Options as defined <a href="https://pdfmake.github.io/docs/options/">here</a></dd>
+            <dt class="optional">Fonts 
+                <span class="property-type">object</span>
+            </dt>
+            <dd> Set an object, that provides fonts to be used by pdfmake as defined <a href="https://pdfmake.github.io/docs/0.1/fonts/standard-14-fonts/#use-in-pdfmake-on-server-side">here</a></dd>
+            <dt class="optional">VFS 
+                <span class="property-type">object</span>
+            </dt>
+            <dd> Set an object, with fonts on base64 format like:</dd>
+            <dd>
+                <code>
+                    <pre>
+                        {
+                            Roboto-Regular.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
+                            Roboto-Medium.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
+                            Roboto-Italics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
+                            Roboto-MediumItalics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
+                        }
+                    </pre>
+                </code>
+            </dd>
         </dl>
     
      <h3>Outputs</h3>
