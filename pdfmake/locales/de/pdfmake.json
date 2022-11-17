@@ -1,0 +1,12 @@
+{
+    "pdfmake": {
+        "label": {
+            "inputProperty": "Dokument",
+            "options": "Optionen",
+            "fonts": "Lettertypen",
+            "vfs": "VFS",
+            "outputType": "Type",
+            "outputProperty": "Ausgabe"
+        }
+    }
+}

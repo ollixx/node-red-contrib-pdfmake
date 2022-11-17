@@ -3,16 +3,16 @@
     "description": "a node to create pdf documents from a well defined json",
     "version": "0.0.1",
     "license": "MIT",
-    "author": "Tiago Gomes <tiagoslg@gmail.com>",
+    "author": "Oliver Charlet <oliver.charlet@clarities.de>",
     "contributors": [
         {
-            "name": "Oliver Charlet",
-            "email": "oliver.charlet@clarities.de"
+            "name": "Tiago Gomes",
+            "email": "tiagoslg@gmail.com"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/tiagoslg/node-red-contrib-pdfmake"
+        "url": "https://github.com/ollixx/node-red-contrib-pdfmake.git"
     },
     "keywords": [
         "node-red",
