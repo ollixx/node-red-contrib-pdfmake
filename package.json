@@ -1,13 +1,13 @@
 {
-    "name": "node-red-contrib-pdfmake",
+    "name": "node-red-contrib-pdfmake-2",
     "description": "a node to create pdf documents from a well defined json",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "license": "MIT",
-    "author": "Oliver Charlet <oliver.charlet@clarities.de>",
+    "author": "Tiago Gomes <tiagoslg@gmail.com>",
     "contributors": [
         {
-            "name": "Tiago Gomes",
-            "email": "tiagoslg@gmail.com"
+            "name": "Oliver Charlet",
+            "email": "oliver.charlet@clarities.de"
         }
     ],
     "repository": {
@@ -22,7 +22,7 @@
     ],
     "node-red": {
         "nodes": {
-            "pdfmake": "pdfmake/pdfmake.js"
+            "pdfmake-2": "pdfmake/pdfmake.js"
         }
     },
     "devDependencies": {
