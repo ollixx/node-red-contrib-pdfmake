@@ -1,7 +1,7 @@
 {
-    "name": "node-red-contrib-pdfmake-2",
+    "name": "@tiagoslg/node-red-contrib-pdfmake",
     "description": "a node to create pdf documents from a well defined json",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "license": "MIT",
     "author": "Tiago Gomes <tiagoslg@gmail.com>",
     "contributors": [
@@ -22,7 +22,7 @@
     ],
     "node-red": {
         "nodes": {
-            "pdfmake-2": "pdfmake/pdfmake.js"
+            "pdfmake": "pdfmake/pdfmake.js"
         }
     },
     "devDependencies": {
