@@ -1,4 +1,4 @@
-<script type="text/html" data-help-name="pdfmake">
+<script type="text/html" data-help-name="pdfmake-fonts">
     <p>Produces a PDF using <a href="https://pdfmake.github.io/docs/" target="blank">pdfmake</a></p>
     
     <h3>Inputs</h3>
@@ -18,21 +18,19 @@
             <dt class="optional">Fonts 
                 <span class="property-type">object</span>
             </dt>
-            <dd> Set an object, that provides fonts to be used by pdfmake as defined <a href="https://pdfmake.github.io/docs/0.1/fonts/standard-14-fonts/#use-in-pdfmake-on-server-side">here</a></dd>
+            <dd> Set an object, that provides fonts to be used by pdfmake as defined <a href="https://pdfmake.github.io/docs/0.1/fonts/custom-fonts-client-side/vfs/#2-assign-pdfmakefonts-in-your-javascript">here</a></dd>
             <dt class="optional">VFS 
                 <span class="property-type">object</span>
             </dt>
             <dd> Set an object, with fonts on base64 format like:</dd>
             <dd>
                 <code>
-                    <pre>
-                        {
-                            Roboto-Regular.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
-                            Roboto-Medium.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
-                            Roboto-Italics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
-                            Roboto-MediumItalics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",
-                        }
-                    </pre>
+                    {<br />
+                    &nbsp;&nbsp;Roboto-Regular.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...", <br />
+                    &nbsp;&nbsp;Roboto-Medium.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",<br />
+                    &nbsp;&nbsp;Roboto-Italics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",<br />
+                    &nbsp;&nbsp;Roboto-MediumItalics.ttf: "AAEAAAARAQAABAAQR0RFRqNLn...",<br />
+                    }
                 </code>
             </dd>
         </dl>
