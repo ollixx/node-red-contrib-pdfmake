@@ -3,7 +3,9 @@
         "label": {
             "inputProperty": "Dokument",
             "options": "Optionen",
-            "outputType": "Typ",
+            "fonts": "Lettertypen",
+            "vfs": "VFS",
+            "outputType": "Type",
             "outputProperty": "Ausgabe"
         }
     }

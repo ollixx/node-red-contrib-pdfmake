@@ -2,7 +2,9 @@
     "pdfmake": {
         "label": {
             "inputProperty": "Property",
-            "options": "Options",
+            "tableOptions": "Options",
+            "fonts": "Fonts",
+            "vfs": "VSF",
             "outputType": "Out Type",
             "outputProperty": "Output to"
         }
